@@ -2,16 +2,5 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": "tanstack-start",
-  "outputDirectory": "dist",
-  "functions": {
-    "server/server.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/server/server.js"
-    }
-  ]
+  "outputDirectory": "dist"
 }
