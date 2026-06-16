@@ -3,10 +3,29 @@
   "installCommand": "npm install",
   "framework": "tanstack-start",
   "outputDirectory": "dist",
+  "functions": {
+    "api/**": {
+      "runtime": "nodejs20.x"
+    },
+    "server.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/server.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
+      ]
     }
   ]
 }
