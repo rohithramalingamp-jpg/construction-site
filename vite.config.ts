@@ -4,11 +4,4 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  nitro: {
-    output: {
-      dir: "dist",
-      publicDir: "dist/client",
-      serverDir: "dist"
-    }
-  }
 });
