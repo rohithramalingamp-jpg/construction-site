@@ -1,49 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Award,
-  CalendarCheck,
-  CheckCircle2,
-  ChevronDown,
-  Clock,
-  Compass,
-  HardHat,
-  Headphones,
-  Home as HomeIcon,
-  Hammer,
-  Layers,
-  Leaf,
-  MapPin,
-  Menu,
-  MessageCircle,
-  Phone,
-  PlayCircle,
-  Quote,
-  Ruler,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  Star,
-  Wrench,
-  X,
-} from "lucide-react";
-
-import heroVilla from "@/assets/hero-villa.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import ctaVilla from "@/assets/cta-villa.jpg";
-import aboutDetail from "@/assets/about-detail.jpg";
-import beforeVilla from "@/assets/before-villa.jpg";
-import beforeApartment from "@/assets/before-apartment.jpg";
-import beforeOffice from "@/assets/before-office.jpg";
-import beforeKitchen from "@/assets/before-kitchen.jpg";
-import beforeBathroom from "@/assets/before-bathroom.jpg";
-import beforeFacade from "@/assets/before-facade.jpg";
-import afterKitchen from "@/assets/after-kitchen.jpg";
-import afterBathroom from "@/assets/after-bathroom.jpg";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,11 +22,74 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div className="space-y-1 text-center py-20">
-      <h1 className="text-4xl font-bold">ATELIER</h1>
-      <p className="text-xl text-gray-600">Premium Design & Build, Chennai</p>
-      <p className="text-gray-500 mt-4">Luxury villas, commercial spaces, interiors and architecture</p>
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-xl">
+        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-full bg-foreground text-background flex items-center justify-center font-bold">
+              A
+            </div>
+            <div>
+              <div className="font-bold text-lg">ATELIER</div>
+              <div className="text-xs text-muted-foreground">Chennai · Design + Build</div>
+            </div>
+          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-20 text-center">
+        <div className="container mx-auto px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Premium Design & Build
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Luxury residential, commercial and interior construction in Chennai.
+            <br />
+            500+ projects. 15+ years. RERA & ISO certified.
+          </p>
+          <button className="bg-foreground text-background px-8 py-3 rounded-lg font-semibold hover:opacity-90">
+            Get Consultation
+          </button>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-surface">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Services</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Residential Villas", desc: "Luxury homes with modern design" },
+              { title: "Commercial Spaces", desc: "Office & retail developments" },
+              { title: "Interior Design", desc: "Premium interior solutions" },
+            ].map((service) => (
+              <div key={service.title} className="p-6 border border-border rounded-lg">
+                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-muted-foreground">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-10 border-t border-border">
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+          <p>&copy; 2026 ATELIER. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
