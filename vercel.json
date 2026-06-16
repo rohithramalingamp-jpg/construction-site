@@ -2,11 +2,5 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": "other",
-  "outputDirectory": ".output",
-  "nodeVersion": "20.x",
-  "functions": {
-    "api/**": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "outputDirectory": ".output"
 }
