@@ -1,7 +1,13 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from 'vite';
+// Your exact plugin import name might differ, look for '@lovable.dev/vite-tanstack-config'
+import { lovableTanstackConfig } from '@lovable.dev/vite-tanstack-config'; 
 
 export default defineConfig({
-  tanstackStart: {
-    server: { entry: "server" },
-  },
+  plugins: [
+    // Add the nitro config here to force-enable it on Vercel
+    lovableTanstackConfig({ 
+      nitro: true 
+    }),
+    // ... any other plugins
+  ],
 });
